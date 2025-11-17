@@ -1,0 +1,67 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1 class="auth-title">Entrar</h1>
+      <p class="auth-subtitle">Bem-vindo de volta!</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Mensagem de Erro -->
+      <div class="alert alert-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Campo Email -->
+      <div class="form-group">
+        <label for="email" class="form-label">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [class.error]="hasError('email', 'required') || hasError('email', 'email')"
+          placeholder="seu@email.com"
+          autocomplete="email"
+        />
+        <span class="error-message" *ngIf="hasError('email', 'required') || hasError('email', 'email')">
+          {{ getErrorMessage('email') }}
+        </span>
+      </div>
+
+      <!-- Campo Senha -->
+      <div class="form-group">
+        <label for="senha" class="form-label">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          formControlName="senha"
+          class="form-control"
+          [class.error]="hasError('senha', 'required') || hasError('senha', 'minlength')"
+          placeholder="Digite sua senha"
+          autocomplete="current-password"
+        />
+        <span class="error-message" *ngIf="hasError('senha', 'required') || hasError('senha', 'minlength')">
+          {{ getErrorMessage('senha') }}
+        </span>
+      </div>
+
+      <!-- Botão de Submit -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="isLoading"
+      >
+        <span *ngIf="!isLoading">Entrar</span>
+        <span *ngIf="isLoading" class="loading-spinner">Entrando...</span>
+      </button>
+    </form>
+
+    <!-- Link para Cadastro -->
+    <div class="auth-footer">
+      <p class="text-muted">
+        Não tem uma conta?
+        <a [routerLink]="['/cadastro']" class="link-primary">Cadastre-se</a>
+      </p>
+    </div>
+  </div>
+</div>

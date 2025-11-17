@@ -1,0 +1,7 @@
+<!-- Navbar (oculta em login/cadastro) -->
+<app-navbar *ngIf="showNavbar"></app-navbar>
+
+<!-- Conteúdo Principal -->
+<main [class.with-navbar]="showNavbar">
+  <router-outlet></router-outlet>
+</main>

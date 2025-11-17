@@ -1,0 +1,104 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1 class="auth-title">Crie sua conta</h1>
+      <p class="auth-subtitle">Comece a ouvir música agora</p>
+    </div>
+
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Mensagem de Erro -->
+      <div class="alert alert-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Campo Nome -->
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome</label>
+        <input
+          type="text"
+          id="nome"
+          formControlName="nome"
+          class="form-control"
+          [class.error]="hasError('nome', 'required') || hasError('nome', 'minlength')"
+          placeholder="Digite seu nome"
+          autocomplete="name"
+        />
+        <span class="error-message" *ngIf="hasError('nome', 'required') || hasError('nome', 'minlength')">
+          {{ getErrorMessage('nome') }}
+        </span>
+      </div>
+
+      <!-- Campo Email -->
+      <div class="form-group">
+        <label for="email" class="form-label">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [class.error]="hasError('email', 'required') || hasError('email', 'email')"
+          placeholder="seu@email.com"
+          autocomplete="email"
+        />
+        <span class="error-message" *ngIf="hasError('email', 'required') || hasError('email', 'email')">
+          {{ getErrorMessage('email') }}
+        </span>
+      </div>
+
+      <!-- Campo Senha -->
+      <div class="form-group">
+        <label for="senha" class="form-label">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          formControlName="senha"
+          class="form-control"
+          [class.error]="hasError('senha', 'required') || hasError('senha', 'minlength')"
+          placeholder="Mínimo 6 caracteres"
+          autocomplete="new-password"
+        />
+        <span class="error-message" *ngIf="hasError('senha', 'required') || hasError('senha', 'minlength')">
+          {{ getErrorMessage('senha') }}
+        </span>
+      </div>
+
+      <!-- Campo Confirmar Senha -->
+      <div class="form-group">
+        <label for="confirmarSenha" class="form-label">Confirmar senha</label>
+        <input
+          type="password"
+          id="confirmarSenha"
+          formControlName="confirmarSenha"
+          class="form-control"
+          [class.error]="hasError('confirmarSenha', 'required') || hasPasswordMismatch()"
+          placeholder="Repita sua senha"
+          autocomplete="new-password"
+        />
+        <span class="error-message" *ngIf="hasError('confirmarSenha', 'required')">
+          {{ getErrorMessage('confirmarSenha') }}
+        </span>
+        <span class="error-message" *ngIf="hasPasswordMismatch()">
+          As senhas não coincidem
+        </span>
+      </div>
+
+      <!-- Botão de Submit -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="isLoading"
+      >
+        <span *ngIf="!isLoading">Cadastrar</span>
+        <span *ngIf="isLoading" class="loading-spinner">Cadastrando...</span>
+      </button>
+    </form>
+
+    <!-- Link para Login -->
+    <div class="auth-footer">
+      <p class="text-muted">
+        Já tem uma conta?
+        <a [routerLink]="['/login']" class="link-primary">Entrar</a>
+      </p>
+    </div>
+  </div>
+</div>

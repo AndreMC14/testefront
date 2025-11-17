@@ -1,0 +1,108 @@
+.biblioteca-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  padding: var(--spacing-lg);
+}
+
+.biblioteca-header {
+  background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.biblioteca-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.biblioteca-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.musicas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-gray);
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--bg-card);
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-white);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-add:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--primary-green);
+  transform: translateY(-2px);
+}
+
+.btn-add-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-green);
+  color: var(--bg-black);
+  border-radius: 50%;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.btn-add-text {
+  color: var(--text-gray-light);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .biblioteca-container {
+    padding: var(--spacing-md);
+  }
+
+  .biblioteca-header {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .biblioteca-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .musicas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn-add {
+    width: 100%;
+    justify-content: center;
+  }
+}

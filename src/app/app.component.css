@@ -1,0 +1,16 @@
+/* Layout principal */
+main {
+  min-height: 100vh;
+}
+
+/* Adicionar padding-top quando navbar está visível */
+main.with-navbar {
+  padding-top: 64px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main.with-navbar {
+    padding-top: 56px;
+  }
+}

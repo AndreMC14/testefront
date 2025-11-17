@@ -1,0 +1,130 @@
+.musica-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.musica-card:hover {
+  background-color: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.musica-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Aspect ratio 1:1 */
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.musica-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.musica-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.musica-card:hover .musica-card-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  width: 56px;
+  height: 56px;
+  background-color: var(--primary-green);
+  border: none;
+  border-radius: 50%;
+  color: var(--bg-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-fast);
+}
+
+.play-button:hover {
+  background-color: var(--primary-green-hover);
+  transform: scale(1.1);
+}
+
+.musica-card-content {
+  padding: 0 var(--spacing-xs);
+}
+
+.musica-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0 0 var(--spacing-xs) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.musica-card-artist {
+  font-size: var(--font-size-sm);
+  color: var(--text-gray);
+  margin: 0 0 var(--spacing-sm) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.musica-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-gray-dark);
+}
+
+.musica-card-genre {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-dark-elevated);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.musica-card-duration {
+  font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .musica-card {
+    padding: var(--spacing-sm);
+  }
+
+  .musica-card-title {
+    font-size: var(--font-size-base);
+  }
+
+  .play-button {
+    width: 48px;
+    height: 48px;
+  }
+}

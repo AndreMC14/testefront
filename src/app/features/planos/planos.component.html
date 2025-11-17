@@ -1,0 +1,50 @@
+<div class="planos-container">
+  <header class="planos-header">
+    <h1 class="planos-title">Premium Music</h1>
+    <p class="planos-subtitle">
+      Mude a forma como você escuta. Áudio sem anúncios e em alta qualidade.
+    </p>
+  </header>
+
+  <div class="planos-grid">
+    <div
+      *ngFor="let plano of planos$ | async; trackBy: trackByPlanoId"
+      class="plano-card"
+    >
+      <div class="plano-header">
+        <h2 class="plano-nome">{{ plano.nome }}</h2>
+        <div class="plano-preco">
+          {{ formatarPreco(plano.preco) }}
+          <span class="plano-periodo">/ mês</span>
+        </div>
+      </div>
+
+      <p class="plano-descricao">{{ plano.descricao }}</p>
+
+      <div class="plano-beneficios">
+        <ul>
+          <li *ngFor="let beneficio of plano.beneficios">
+            <svg class="check-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            {{ beneficio }}
+          </li>
+        </ul>
+      </div>
+
+      <button
+        class="btn btn-primary btn-assinar"
+        (click)="assinar(plano)"
+        [attr.aria-label]="'Assinar ' + plano.nome"
+      >
+        Assinar Agora
+      </button>
+    </div>
+  </div>
+
+  <footer class="planos-footer">
+    <p class="disclaimer">
+      Cancele quando quiser. Aplicam-se Termos e Condições.
+    </p>
+  </footer>
+</div>

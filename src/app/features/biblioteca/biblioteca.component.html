@@ -1,0 +1,38 @@
+<div class="biblioteca-container">
+  <header class="biblioteca-header">
+    <h1 class="biblioteca-title">Sua Biblioteca</h1>
+  </header>
+
+  <main class="biblioteca-content">
+    <!-- Lista de Músicas -->
+    <div class="musicas-grid">
+      <app-musica-card
+        *ngFor="let musica of musicas$ | async; trackBy: trackByMusicaId"
+        [musica]="musica"
+      ></app-musica-card>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="action-buttons">
+      <button
+        type="button"
+        class="btn-add"
+        (click)="adicionarArtista()"
+        aria-label="Adicionar artista"
+      >
+        <span class="btn-add-icon">+</span>
+        <span class="btn-add-text">Adicionar artista</span>
+      </button>
+
+      <button
+        type="button"
+        class="btn-add"
+        (click)="adicionarMusica()"
+        aria-label="Adicionar música"
+      >
+        <span class="btn-add-icon">+</span>
+        <span class="btn-add-text">Adicionar música</span>
+      </button>
+    </div>
+  </main>
+</div>
